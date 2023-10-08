@@ -1,51 +1,37 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
-import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
 
+import "../styles/Home.css"
+import Projects from "./Projects";
+import Image from "./images/Black and Neon Green Modern Creative Agency Timeline Instagram Story.png";
 
-const Home = () => {
-  const navigate = useNavigate();
-  const [cookies, removeCookie] = useCookies([]);
-  const [username, setUsername] = useState("");
-  useEffect(() => {
-    const verifyCookie = async () => {
-      if (!cookies.token) {
-        navigate("/login");
-      }
-      const { data } = await axios.post(
-        "https://heliosspaceapps.onrender.com",
-        {},
-        { withCredentials: true }
-      );
-      const { status, user } = data;
-      console.log(status, user)
-      setUsername(user);
-      return status
-        ? toast(`Hello ${user}`, {
-            position: "top-right",
-          })
-        : (removeCookie("token"), navigate("/login"));
-    };
-    verifyCookie();
-  }, [cookies, navigate, removeCookie]);
-  const Logout = () => {
-    removeCookie("token");
-    navigate("/signup");
-  };
-  return (
-    <>
-      <div className="home_page">
-        <h4>
-          {" "}
-          Welcome <span>{username}</span>
-        </h4>
-        <button onClick={Logout}>LOGOUT</button>
-      </div>
-      <ToastContainer />
-    </>
-  );
-};
+function Home(){
+    return (
+      <>
+       
+        <div className="Info">
+          <div className="h">
+            <h1 className="whatis">What's Heliophysic Big Year?</h1>
+            <div className="i">
+              <p className="helioinfo">
+                The Heliophysics Big Year is a global celebration of solar
+                science and the Sun's influence on Earth and the entire solar
+                system. During the Heliophysics Big Year, you will have the
+                opportunity to participate in many solar science events such as
+                watching solar eclipses, experiencing an aurora, participating
+                in citizen science projects, and other fun Sun-related
+                activities.
+              </p>
+            </div>
+          </div>
+          <div className="image-hby">
+            <img src="https://science.nasa.gov/wp-content/uploads/2023/09/HBY_color_full.png" className="nasa-img"></img>
+          </div>
+        </div>
+        <br/>
+        
+        <Projects />
+        <img className="timeline" src={Image}></img>
+      </>
+    );
+}
 
 export default Home;

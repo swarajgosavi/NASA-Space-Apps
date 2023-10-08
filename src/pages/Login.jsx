@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "../styles/login.css"
 import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
@@ -58,6 +59,7 @@ const Login = () => {
   };
 
   return (
+    <div className="login_class">
     <div className="form_container">
       <h2>Login Account</h2>
       <form onSubmit={handleSubmit}>
@@ -87,6 +89,7 @@ const Login = () => {
         </span>
       </form>
       <ToastContainer />
+    </div>
     </div>
   );
 };
