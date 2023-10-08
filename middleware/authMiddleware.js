@@ -7,7 +7,7 @@ export function userVerification (req, res) {
   if (!token) {
     return res.json({ status: false })
   }
-  jwt.verify(token, process.env.TOKEN, async (err, data) => {
+  jwt.verify(token, "HeliosBigYear", async (err, data) => {
     if (err) {
      return res.json({ status: false })
     } else {
