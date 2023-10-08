@@ -22,9 +22,9 @@ app.get('/', (request, response) => {
 
 app.use(
     cors({
-        origin: ["http://localhost:3000", "https://heliosconnect.onrender.com"],
-        methods: ["GET", "POST", "PUT", "DELETE"],
-        credentials: true,
+      origin: ["http://localhost:3000", "https://heliosconnect.onrender.com"],
+      methods: ["GET", "POST", "PUT", "DELETE"],
+      credentials: true,
     })
 );
 
